@@ -1,0 +1,334 @@
+/* Hallmark · macrostructure: Long Document · theme: studied-DNA (source: existing akinyemibajulaiye.com) · genre: personal editorial · tone: personal and lightly playful · anchor: existing red · nav: original profile · footer: original social links · pre-emit critique: P5 H4 E4 S5 R5 V5 */
+@import './tokens.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  position: relative;
+}
+
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Texture Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Vignette / Blue Glow */
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+body.dark-mode .vignette {
+  box-shadow: inset 0 0 150px var(--blue-glow);
+}
+
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 7vw, 2.8rem);
+  font-weight: 600;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+h3 {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bio {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+li::before {
+  content: "■";
+  color: var(--accent-red);
+  font-size: 0.8rem;
+  margin-top: 6px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-red);
+  outline-offset: 4px;
+}
+
+a:active,
+button:active {
+  opacity: 0.8;
+}
+
+.link-underline {
+  border-bottom: 2px solid var(--accent-red);
+}
+
+.portfolio-intro,
+.teaching {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.portfolio-intro {
+  gap: var(--space-sm);
+  padding-block-start: var(--space-sm);
+}
+
+.work-list {
+  gap: 0;
+}
+
+.work-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding-block: var(--space-xl);
+  border-top: 1px solid var(--rule-light);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.work-item:last-child {
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.work-kind {
+  color: var(--muted-light);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.work-link {
+  display: inline-block;
+  white-space: nowrap;
+  margin-block-start: var(--space-xs);
+}
+
+.teaching {
+  gap: var(--space-md);
+}
+
+body.dark-mode .work-item {
+  border-color: var(--rule-dark);
+}
+
+body.dark-mode .work-kind {
+  color: var(--muted-dark);
+}
+
+/* Portrait */
+.portrait-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.portrait {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  z-index: 10000;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Page Peel */
+.page-peel {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 140px;
+  height: 140px;
+  background: linear-gradient(135deg, transparent 50%, #ddd 50%, #fff 100%);
+  z-index: 10001;
+  cursor: pointer;
+  transition: width 0.3s ease, height 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.page-peel::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  transform: rotate(-45deg) translate(-50%, -50%);
+}
+
+.page-peel:hover {
+  width: 160px;
+  height: 160px;
+}
+
+.favorites-text {
+  position: absolute;
+  bottom: 40px;
+  right: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transform: rotate(-45deg);
+  white-space: nowrap;
+  font-family: var(--font-display);
+  color: var(--text-light);
+}
+
+body.dark-mode .favorites-text {
+  color: #000;
+  /* Keep it dark on the white peel */
+}
+
+@media (max-width: 40rem) {
+  .container {
+    padding-block: var(--space-2xl);
+    gap: var(--space-xl);
+  }
+
+  h1 {
+    font-size: clamp(2.7rem, 11vw, 3.5rem);
+  }
+
+  .work-item {
+    padding-block: var(--space-lg);
+  }
+
+  .page-peel {
+    width: 100px;
+    height: 100px;
+  }
+
+  .page-peel:hover {
+    width: 100px;
+    height: 100px;
+  }
+
+  .favorites-text {
+    bottom: 29px;
+    right: 11px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .vignette,
+  a,
+  .theme-toggle,
+  .page-peel {
+    transition: none;
+  }
+}
