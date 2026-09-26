@@ -49,8 +49,8 @@ function App() {
                         </p>
                         <br />
                         <p>
-                            I run <a href="https://pentridgemedia.com" className="link-underline">Pentridge Media</a>,
-                            an AI innovation studio that provides systems, software, and community for modern businesses.
+                            Through <a href="https://pentridgemedia.com" className="link-underline">Pentridge Media</a>,
+                            I’ve built AI systems, software, and practical learning experiences for modern businesses.
                             I also co-organize <a href="https://instagram.com/vibecodephilly" className="link-underline">Vibe Code Philly</a>,
                             a community dedicated to teaching the next generation of builders.
                         </p>
